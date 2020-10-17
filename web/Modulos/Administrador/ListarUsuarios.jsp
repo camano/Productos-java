@@ -33,9 +33,22 @@ Author     : jonathan
                     <!-- /#page-content-wrapper -->
                     <div id="contenido">
                         <div class="container">
-                           
-                            <div id="listar"></div>
-                           
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">First</th>
+                                        <th scope="col">Last</th>
+                                        <th scope="col">Handle</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="listar">
+                                  
+                                  
+                                </tbody>
+                            </table>
+                            
+
 
                         </div>
                     </div>

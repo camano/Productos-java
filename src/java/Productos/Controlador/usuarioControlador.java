@@ -102,7 +102,11 @@ public class usuarioControlador extends HttpServlet {
         List<usuario> lista = usuariodao.listarusuario();
         try (PrintWriter out = response.getWriter()) {
             for (int i = 0; i < lista.size(); i++) {
-                out.println("<h4>"+lista.get(i).getUsuarioNombre()+"</h4>");
+                out.println("<tr>");
+                out.println("<th scope=\"row\">"+lista.get(i).getUsuarioId()+"</th>");
+                out.println("<td>"+lista.get(i).getUsuarioNombre()+"</td>");
+                out.println("<td>"+lista.get(i).getUsuarioTelefono()+"</td>");
+                out.println("</tr>");
             }
         } catch (Exception e) {
 
