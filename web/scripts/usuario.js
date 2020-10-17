@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 function listarusuario() {
     $.ajax({
-        url: "usuarioControlador",
+        url: "listarusuarios",
        success:function(e){
            var html="";
             for (var i = 0; i < e.length; i++) {

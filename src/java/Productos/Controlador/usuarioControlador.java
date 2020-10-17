@@ -35,16 +35,22 @@ public class usuarioControlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         UsuarioDao usuariodao = new UsuarioDao();
-        Gson json = new Gson();
-        String gson = "";
-        String enu = "";
-        PrintWriter out = null;
-        List<usuario> lista = usuariodao.listarusuario();
-        gson = json.toJson(lista);
-        response.setContentType("application/json");
-        out = response.getWriter();
-        out.print(gson);
-        out.flush();
+
+        String url = request.getServletPath();
+        switch (url) {
+            case "/listarusuarios":
+                Gson json = new Gson();
+                String gson = "";
+                String enu = "";
+                PrintWriter out = null;
+                List<usuario> lista = usuariodao.listarusuario();
+                gson = json.toJson(lista);
+                response.setContentType("application/json");
+                out = response.getWriter();
+                out.print(gson);
+                out.flush();
+                break;
+        }
 
     }
 
