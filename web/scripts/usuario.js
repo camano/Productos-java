@@ -6,19 +6,35 @@
 
 
 $(document).ready(function () {
-
     listarusuario();
+    
+
+
 });
+
+function listarusuariojson() {
+    $.ajax({
+        url: "Api/listarusuarios",
+        success: function (e) {
+            var html = "";
+            for (var i = 0; i < e.length; i++) {
+                html += "<h5>" + e[i].usuarioNombre + "</h5>";
+            }
+            $('#listar').html(html);
+
+
+
+
+
+        }
+    });
+}
 
 function listarusuario() {
     $.ajax({
         url: "listarusuarios",
-       success:function(e){
-           var html="";
-            for (var i = 0; i < e.length; i++) {
-                html+="<h5>"+e[i].usuarioNombre+"</h5>";
-            }
-            $('#listar').html(html);
-       }
+
+    }).done(function (e) {
+        $('#listar').html(e);
     });
 }

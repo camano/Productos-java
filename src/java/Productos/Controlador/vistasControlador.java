@@ -20,9 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jonathan
  */
-public class usuarioControlador extends HttpServlet {
-
-    UsuarioDao usuariodao = new UsuarioDao();
+public class vistasControlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,26 +34,15 @@ public class usuarioControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         String url = request.getServletPath();
         switch (url) {
-                case "/Api/listarusuarios":
-                Gson json = new Gson();
-                String gson = "";
-                String enu = "";
-                PrintWriter out = null;
-                List<usuario> lista = usuariodao.listarusuario();
-                gson = json.toJson(lista);
-                response.setContentType("application/json");
-                out = response.getWriter();
-                out.print(gson);
-                out.flush();
+            case "/Administrador":
+                request.getRequestDispatcher("Modulos/Administrador/ListarUsuarios.jsp").forward(request, response);
                 break;
-            case "/listarusuarios":
-                listarusuarios(response, request);
+            case "/Home":
+                request.getRequestDispatcher("index.jsp").forward(request, response);
                 break;
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,17 +83,5 @@ public class usuarioControlador extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void listarusuarios(HttpServletResponse response, HttpServletRequest request) {
-  
-        List<usuario> lista = usuariodao.listarusuario();
-        try (PrintWriter out = response.getWriter()) {
-            for (int i = 0; i < lista.size(); i++) {
-                out.println("<h4>"+lista.get(i).getUsuarioNombre()+"</h4>");
-            }
-        } catch (Exception e) {
-
-        }
-    }
 
 }

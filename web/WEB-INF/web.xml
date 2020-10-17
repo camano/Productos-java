@@ -4,11 +4,21 @@
         <servlet-name>usuarioControlador</servlet-name>
         <servlet-class>Productos.Controlador.usuarioControlador</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>vistasControlador</servlet-name>
+        <servlet-class>Productos.Controlador.vistasControlador</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>usuarioControlador</servlet-name>
         <url-pattern>/usuarioControlador</url-pattern>
         <url-pattern>/Api/listarusuarios</url-pattern>
         <url-pattern>/listarusuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>vistasControlador</servlet-name>
+        <url-pattern>/vistasControlador</url-pattern>
+        <url-pattern>/Administrador</url-pattern>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
