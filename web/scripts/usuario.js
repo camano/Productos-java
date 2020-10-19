@@ -1,40 +1,36 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-$(document).ready(function () {
-    listarusuario();
-    
-
-
-});
-
-function listarusuariojson() {
+function ListarUsuario() {
     $.ajax({
         url: "Api/listarusuarios",
         success: function (e) {
             var html = "";
+            var html2 = "";
+            var cont = 1;
             for (var i = 0; i < e.length; i++) {
-                html += "<h5>" + e[i].usuarioNombre + "</h5>";
+                html = "<tr>";
+                html += "<th scope=\"row\">" + cont + "</th>";
+                html += "<td>" + e[i].usuarioNombre + "</td>";
+                html += "<td>" + e[i].usuarioTelefono + "</td>";
+                html += "<td>" + e[i].usuarioCorreo + "</td>";
+                html += "<td></td>";
+                html += "<td><input type=\"button\" id='btnEditarUsuario' class=\"btn btn-warning\" value='Editar'></td>";
+                html += "<td><button type=\"button\" id='btnEliminarUsuario' class=\"btn btn-danger form-group\">Eliminar</button></td>";
+                html += "</tr>";
+                cont++;
+                html2 += html;
             }
-            $('#listar').html(html);
-
-
-
-
-
+            $('#listar').html(html2);
+            
         }
     });
 }
 
-function listarusuario() {
-    $.ajax({
-        url: "listarusuarios",
-
-    }).done(function (e) {
-        $('#listar').html(e);
+$(document).ready(function () {
+    ListarUsuario();
+    $('#btnEditarUsuario').click(function () {
+        alert('btneditar');
     });
-}
+    $('#btnEliminarUsuario').click(function () {
+        alert("btneliminar");
+    });
+
+});

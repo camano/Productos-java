@@ -14,14 +14,12 @@ Author     : jonathan
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>plantilla</title>
         <jsp:include page="../../Complementos/LinksCSS.jsp"></jsp:include>
         </head>
-
         <body>
             <div class="d-flex" id="wrapper">
                 <!-- Sidebar -->
@@ -31,33 +29,22 @@ Author     : jonathan
                 <div id="page-content-wrapper">
                 <jsp:include page="../../Complementos/Navbar.jsp"></jsp:include>
                     <!-- /#page-content-wrapper -->
-                    <div id="contenido">
-                        <div class="container">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Telefono</th>
-                                        <th scope="col">Correo</th>
-                                        <th scope="col">Rol</th>
-                                        <th scope="col">Editar</th>
-                                        <th scope="col">Eliminar</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="listar">
-                                  
-                                  
-                                </tbody>
-                            </table>
-                            
-
-
-                        </div>
-                    </div>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Telefono</th>
+                                <th scope="col">Correo</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listar"></tbody>
+                    </table>
                 </div>
             </div>
         </body>
     <jsp:include page="../../Complementos/LinksJS.jsp"></jsp:include>
-
 </html>

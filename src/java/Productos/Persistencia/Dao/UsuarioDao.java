@@ -82,6 +82,7 @@ public class UsuarioDao implements Iusuario {
                 usuario.setUsuarioId(rs.getInt("usuarioId"));
                 usuario.setUsuarioNombre(rs.getString("usuarioNombre"));
                 usuario.setUsuarioTelefono(rs.getInt("usuarioTelefono"));
+                usuario.setUsuarioCorreo(rs.getString("usuarioCorreo"));
 
                 lista.add(usuario);
             }
