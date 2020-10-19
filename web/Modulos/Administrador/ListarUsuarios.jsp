@@ -23,6 +23,7 @@ Author     : jonathan
         </head>
 
         <body>
+        <jsp:include page="../../Complementos/modal.jsp"></jsp:include>
             <div class="d-flex" id="wrapper">
                 <!-- Sidebar -->
             <jsp:include page="../../Complementos/Nav.jsp"></jsp:include>

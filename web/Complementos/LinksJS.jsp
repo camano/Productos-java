@@ -3,6 +3,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.bundle.min.js"></script>
 <script src="${pageContext.request.contextPath}/scripts/usuario.js"></script>
+<script src="${pageContext.request.contextPath}/scripts/modal.js"></script>
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

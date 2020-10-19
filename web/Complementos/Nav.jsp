@@ -13,7 +13,6 @@
         </div>
         <a href="#" id="btn" class="list-group-item list-group-item-action bg-light">Productos</a>
         <a href="${pageContext.request.contextPath}/listarusuarios" class="list-group-item list-group-item-action bg-light">Requerimientos</a>
-        <input type="submit" onclick="eliminarusuario(1);"  value="l">
-        <input type="submit" id="btn"  value="l">
+        <input type="submit" id="btn" onclick="desplejarmodal(/,hola)" value="l">
     </div>
 </div>

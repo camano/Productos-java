@@ -25,6 +25,7 @@ public class usuarioControlador extends HttpServlet {
 
     UsuarioDao usuariodao = new UsuarioDao();
     Alerta alerta = new Alerta();
+    usuario usuario = new usuario();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,6 +55,15 @@ public class usuarioControlador extends HttpServlet {
                 break;
             case "/listarusuarios":
                 listarusuarios(response, request);
+                break;
+            case "/ConsultarUsuario":
+                int id = Integer.parseInt(request.getParameter("idusuario"));
+                usuario = usuariodao.consularusuarioid(id);
+                gson = json.toJson(usuario);
+                response.setContentType("application/json");
+                out = response.getWriter();
+                out.print(gson);
+                out.flush();
                 break;
             case "/eliminarusuario":
                 int idusuario = Integer.parseInt(request.getParameter("idusuario"));
@@ -119,11 +129,12 @@ public class usuarioControlador extends HttpServlet {
 
                 out.println("<tr>");
                 out.println("<th scope=\"row\">" + cont + "</th>");
+                out.println("<input type='hidden' id='id' value='"+lista.get(i).getUsuarioId()+"' >");
                 out.println("<td>" + lista.get(i).getUsuarioNombre() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioTelefono() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioCorreo() + "</td>");
                 out.println("<td></td>");
-                out.println("<td><button type=\"button\" class=\"btn btn-warning\">Editar</button></td>");
+                out.println("<td><button type=\"button\" onclick=\"desplejarmodal('Modulos/Administrador/EditarUsuario.jsp','Editar Usuario');\" class=\"btn btn-warning\">Editar</button></td>");
                 out.println("<td><button type=\"button\" onclick='eliminarusuario(" + lista.get(i).getUsuarioId() + ");' class=\"btn btn-danger form-group\">Eliminar</button></td>");
                 out.println("</tr>");
                 cont++;

@@ -1,10 +1,6 @@
 $(document).ready(function () {
     listarusuario();
-    listarusuariojson();
-
 });
-
-
 
 function listarusuariojson() {
     $.ajax({
@@ -15,7 +11,6 @@ function listarusuariojson() {
                 html += "<h5>" + e[i].usuarioNombre + "</h5>";
             }
             $('#list').html(html);
-
         }
     });
 }
@@ -28,6 +23,9 @@ function listarusuario() {
     });
 }
 
+function EditarUsuario() {
+    console.log($('#id').val());
+}
 
 function eliminarusuario(id) {
     Swal.fire({
@@ -40,7 +38,7 @@ function eliminarusuario(id) {
         confirmButtonText: 'Aceptar',
         cancelButtonText: 'Cancelar'
     }).then((result) => {
-        
+        if (result.value) {
             $.ajax({
                 url: "eliminarusuario",
                 method: "post",
@@ -55,6 +53,6 @@ function eliminarusuario(id) {
                     listarusuario();
                 }
             });
-        
+        }
     });
 }
