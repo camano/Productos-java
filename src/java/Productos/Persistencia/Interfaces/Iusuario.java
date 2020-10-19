@@ -17,4 +17,7 @@ public interface Iusuario {
     public boolean agregarusuario(usuario usuario);
     public usuario Consultarlogin(usuario usuario);
     public List listarusuario();
+    public void delete(int id);
+    public usuario consularusuarioid(int id);
+    public void actualizarusuario(usuario usuario,int id);
 }

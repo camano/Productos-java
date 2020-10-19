@@ -19,11 +19,17 @@ public class pruebas {
  
     public static void main(String[] args) throws SQLException {
         Conexion con= new Conexion();
+        usuario usuario=new usuario();
         UsuarioDao usuariodao=new UsuarioDao();
-        
-       
-        List<usuario> lista=usuariodao.listarusuario();
-        System.out.println(lista.get(0).getUsuarioNombre());
+        usuario.setUsuarioNombre("Jonathan");
+        usuario.setUsuarioTelefono(313);
+        usuario.setUsuarioCorreo("camanojhonatan@gmail.com");
+        usuariodao.actualizarusuario(usuario, 1);
+        System.out.println(usuario.getUsuarioNombre());
+        System.out.println(usuario.getUsuarioTelefono());
+        System.out.println(usuario.getUsuarioCorreo());
+        System.out.println(usuario.getUsuarioId());
+
        
         
     }
