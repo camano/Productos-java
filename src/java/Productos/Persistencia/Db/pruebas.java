@@ -22,7 +22,9 @@ public class pruebas {
         usuario usuario = new usuario();
         UsuarioDao usuariodao = new UsuarioDao();
         usuario = usuariodao.consularusuarioid(15);
-        System.out.println(usuario.getUsuarioId());
+        usuario.setUsuarioNombre("pruebas");
+        usuariodao.actualizarusuario(usuario);
+        System.out.println(usuario.getUsuarioNombre());
 
     }
 }

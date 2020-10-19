@@ -19,5 +19,5 @@ public interface Iusuario {
     public List listarusuario();
     public void delete(int id);
     public usuario consularusuarioid(int id);
-    public void actualizarusuario(usuario usuario,int id);
+    public void actualizarusuario(usuario usuario);
 }

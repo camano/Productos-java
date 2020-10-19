@@ -26,6 +26,10 @@ public class usuarioControlador extends HttpServlet {
     UsuarioDao usuariodao = new UsuarioDao();
     Alerta alerta = new Alerta();
     usuario usuario = new usuario();
+    Gson json = new Gson();
+    String gson = "";
+    String enu = "";
+    PrintWriter out = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +43,7 @@ public class usuarioControlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Gson json = new Gson();
-        String gson = "";
-        String enu = "";
-        PrintWriter out = null;
+
         String url = request.getServletPath();
         switch (url) {
             case "/Api/listarusuarios":
@@ -55,6 +56,9 @@ public class usuarioControlador extends HttpServlet {
                 break;
             case "/listarusuarios":
                 listarusuarios(response, request);
+                break;
+            case "/editarusuario":
+                editarusuarios(response, request);
                 break;
             case "/consultarusuario":
                 int id = Integer.parseInt(request.getParameter("idusuario"));
@@ -129,7 +133,7 @@ public class usuarioControlador extends HttpServlet {
 
                 out.println("<tr>");
                 out.println("<th scope=\"row\">" + cont + "</th>");
-                out.println("<input type='hidden' id='id' value='"+lista.get(i).getUsuarioId()+"' >");
+                out.println("<input type='hidden' id='id' value='" + lista.get(i).getUsuarioId() + "' >");
                 out.println("<td>" + lista.get(i).getUsuarioNombre() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioTelefono() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioCorreo() + "</td>");
@@ -142,6 +146,23 @@ public class usuarioControlador extends HttpServlet {
         } catch (Exception e) {
 
         }
+    }
+
+    private void editarusuarios(HttpServletResponse response, HttpServletRequest request) throws IOException {
+        usuario.setUsuarioNombre(request.getParameter("usuarioNombre"));
+        usuario.setUsuarioCorreo(request.getParameter("usuarioCorreo"));
+        usuario.setUsuarioId(Integer.parseInt(request.getParameter("usuarioId")));
+        usuario.setUsuarioTelefono(Integer.parseInt(request.getParameter("usuarioTelefono")));
+        alerta.setTitulo("Sastifatorio");
+        alerta.setTexto("Se Actualizo Correctamente");
+        alerta.setTipo("succes");
+        usuariodao.actualizarusuario(usuario);
+        gson = json.toJson(alerta);
+        response.setContentType("application/json");
+        out = response.getWriter();
+        out.print(gson);
+        out.flush();
+
     }
 
 }

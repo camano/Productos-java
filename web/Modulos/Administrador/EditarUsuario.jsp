@@ -1,4 +1,5 @@
-<form action="<" method="POST" class="" data-form="">
+<form action="" id="formEditarUsuario" method="POST" class="" data-form="">
+    <input type="hidden" name="usuarioId" id="usuarioId">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="inputEmail4">Usuario</label>
@@ -18,12 +19,14 @@
         </div>
         <div class="form-group col-md-6">
             <label for="inputPassword4">Rol</label>
-            <input type="password" name="" class="form-control" id="inputPassword4">
+            <input type="text" name="" class="form-control"  id="inputPassword4">
+            
         </div>
+       
 
 
     </div>
     
     </div>
 </form>
-<input type="submit"  class="btn btn-primary">
+<input type="submit"  onclick="EditarUsuario();" class="btn btn-primary">

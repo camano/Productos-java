@@ -134,14 +134,14 @@ public class UsuarioDao implements Iusuario {
     }
 
     @Override
-    public void actualizarusuario(usuario usuario, int id) {
+    public void actualizarusuario(usuario usuario) {
         String sql = "call ActualizarUsuario(?,?,?,?)";
         try {
             ps = con.getConnection().prepareCall(sql);
             ps.setString(1, usuario.getUsuarioNombre());
             ps.setInt(2, usuario.getUsuarioTelefono());
             ps.setString(3, usuario.getUsuarioCorreo());
-            ps.setInt(4, id);
+            ps.setInt(4, usuario.getUsuarioId());
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);

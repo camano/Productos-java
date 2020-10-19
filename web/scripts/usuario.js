@@ -1,6 +1,6 @@
 $(document).ready(function () {
     listarusuario();
-   
+
 });
 
 
@@ -13,9 +13,9 @@ function listarusuario() {
 }
 
 function EditarUsuario() {
-      Swal.fire({
+    Swal.fire({
         title: '¿Estás seguro?',
-        text: "Seguro quiere Eliminar este usuario",
+        text: "Seguro quiere Actualizar este usuario",
         type: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -27,7 +27,7 @@ function EditarUsuario() {
             $.ajax({
                 url: "editarusuario",
                 method: "post",
-                data: {idusuario: id},
+                data: $('#formEditarUsuario').serialize(),
                 success: function (e) {
                     Swal.fire({
                         title: e.titulo,
@@ -36,7 +36,11 @@ function EditarUsuario() {
                         confirmButtonText: 'Aceptar'
                     });
                     listarusuario();
-                }
+                },
+                error: function (error) {
+                    console.log(error);
+
+                },
             });
         }
     });
@@ -49,12 +53,14 @@ function ConsultarUsuario(url, titulo) {
         method: "post",
         data: {idusuario: $('#id').val()},
         success: function (e) {
-           $('#usuarioNombre').val(e.usuarioNombre);
-           $('#usuarioTelefono').val(e.usuarioTelefono);
-           $('#usuarioCorreo').val(e.usuarioCorreo);
+            $('#usuarioId').val($('#id').val());
+            $('#usuarioNombre').val(e.usuarioNombre);
+            $('#usuarioTelefono').val(e.usuarioTelefono);
+            $('#usuarioCorreo').val(e.usuarioCorreo);
+
         }
     });
-    
+
 }
 
 function eliminarusuario(id) {

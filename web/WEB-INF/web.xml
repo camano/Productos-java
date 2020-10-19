@@ -15,6 +15,7 @@
         <url-pattern>/listarusuarios</url-pattern>
         <url-pattern>/eliminarusuario</url-pattern>
         <url-pattern>/consultarusuario</url-pattern>
+        <url-pattern>/editarusuario</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>vistasControlador</servlet-name>
