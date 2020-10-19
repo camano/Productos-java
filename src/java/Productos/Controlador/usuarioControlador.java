@@ -56,7 +56,7 @@ public class usuarioControlador extends HttpServlet {
             case "/listarusuarios":
                 listarusuarios(response, request);
                 break;
-            case "/ConsultarUsuario":
+            case "/consultarusuario":
                 int id = Integer.parseInt(request.getParameter("idusuario"));
                 usuario = usuariodao.consularusuarioid(id);
                 gson = json.toJson(usuario);
@@ -134,7 +134,7 @@ public class usuarioControlador extends HttpServlet {
                 out.println("<td>" + lista.get(i).getUsuarioTelefono() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioCorreo() + "</td>");
                 out.println("<td></td>");
-                out.println("<td><button type=\"button\" onclick=\"desplejarmodal('Modulos/Administrador/EditarUsuario.jsp','Editar Usuario');\" class=\"btn btn-warning\">Editar</button></td>");
+                out.println("<td><button type=\"button\" onclick=\"ConsultarUsuario('Modulos/Administrador/EditarUsuario.jsp','Editar Usuario');\" class=\"btn btn-warning\">Editar</button></td>");
                 out.println("<td><button type=\"button\" onclick='eliminarusuario(" + lista.get(i).getUsuarioId() + ");' class=\"btn btn-danger form-group\">Eliminar</button></td>");
                 out.println("</tr>");
                 cont++;

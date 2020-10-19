@@ -112,7 +112,7 @@ public class UsuarioDao implements Iusuario {
         usuario usuario = new usuario();
         try {
 
-            String sql = "select * from consultarusuario where usuarioId=" + id;
+            String sql = "select * from usuario where usuarioId=" + id;
             ps = con.getConnection().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.absolute(1)) {

@@ -16,14 +16,13 @@ import java.util.List;
  * @author jonathan
  */
 public class pruebas {
- 
-    public static void main(String[] args) throws SQLException {
-        Conexion con= new Conexion();
-        usuario usuario=new usuario();
-        UsuarioDao usuariodao=new UsuarioDao();
-        usuariodao.delete(1);
 
-       
-        
+    public static void main(String[] args) throws SQLException {
+        Conexion con = new Conexion();
+        usuario usuario = new usuario();
+        UsuarioDao usuariodao = new UsuarioDao();
+        usuario = usuariodao.consularusuarioid(15);
+        System.out.println(usuario.getUsuarioId());
+
     }
 }
