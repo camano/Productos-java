@@ -7,6 +7,7 @@ package Productos.Persistencia.Dao;
 
 import Productos.Persistencia.Db.Conexion;
 import Productos.Persistencia.Interfaces.Iusuario;
+import Productos.Persistencia.Vo.rol;
 import Productos.Persistencia.Vo.usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -73,16 +74,20 @@ public class UsuarioDao implements Iusuario {
         PreparedStatement pst;
         ResultSet rs;
         List<usuario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM usuario";
+        String sql = "SELECT * FROM producto.usuario;";
         try {
             pst = con.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {
                 usuario usuario = new usuario();
+                rol rol = new rol();
                 usuario.setUsuarioId(rs.getInt("usuarioId"));
                 usuario.setUsuarioNombre(rs.getString("usuarioNombre"));
                 usuario.setUsuarioTelefono(rs.getInt("usuarioTelefono"));
-
+                usuario.setUsuarioCorreo(rs.getString("usuarioCorreo"));
+             /*   rol.setRolId(rs.getInt("rolId"));
+                rol.setRolNombre(rs.getString("rolNombre"));
+                usuario.setRol(rol);*/
                 lista.add(usuario);
             }
 
@@ -93,9 +98,9 @@ public class UsuarioDao implements Iusuario {
 
     @Override
     public void delete(int id) {
-        String sql = "delete from usuario where usuarioId="+id;
+        String sql = "delete from usuario where usuarioId=" + id;
         try {
-            ps=con.getConnection().prepareStatement(sql);
+            ps = con.getConnection().prepareStatement(sql);
             ps.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);

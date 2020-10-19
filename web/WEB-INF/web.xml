@@ -13,6 +13,7 @@
         <url-pattern>/usuarioControlador</url-pattern>
         <url-pattern>/Api/listarusuarios</url-pattern>
         <url-pattern>/listarusuarios</url-pattern>
+        <url-pattern>/eliminarusuario</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>vistasControlador</servlet-name>

@@ -21,14 +21,7 @@ public class pruebas {
         Conexion con= new Conexion();
         usuario usuario=new usuario();
         UsuarioDao usuariodao=new UsuarioDao();
-        usuario.setUsuarioNombre("Jonathan");
-        usuario.setUsuarioTelefono(313);
-        usuario.setUsuarioCorreo("camanojhonatan@gmail.com");
-        usuariodao.actualizarusuario(usuario, 1);
-        System.out.println(usuario.getUsuarioNombre());
-        System.out.println(usuario.getUsuarioTelefono());
-        System.out.println(usuario.getUsuarioCorreo());
-        System.out.println(usuario.getUsuarioId());
+        usuariodao.delete(1);
 
        
         

@@ -1,16 +1,10 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
 $(document).ready(function () {
     listarusuario();
-    
-
+    listarusuariojson();
 
 });
+
+
 
 function listarusuariojson() {
     $.ajax({
@@ -20,11 +14,7 @@ function listarusuariojson() {
             for (var i = 0; i < e.length; i++) {
                 html += "<h5>" + e[i].usuarioNombre + "</h5>";
             }
-            $('#listar').html(html);
-
-
-
-
+            $('#list').html(html);
 
         }
     });
@@ -33,8 +23,38 @@ function listarusuariojson() {
 function listarusuario() {
     $.ajax({
         url: "listarusuarios",
-
     }).done(function (e) {
         $('#listar').html(e);
+    });
+}
+
+
+function eliminarusuario(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Seguro quiere Eliminar este usuario",
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        
+            $.ajax({
+                url: "eliminarusuario",
+                method: "post",
+                data: {idusuario: id},
+                success: function (e) {
+                    Swal.fire({
+                        title: e.titulo,
+                        text: e.texto,
+                        type: e.tipo,
+                        confirmButtonText: 'Aceptar'
+                    });
+                    listarusuario();
+                }
+            });
+        
     });
 }

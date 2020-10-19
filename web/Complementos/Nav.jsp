@@ -11,7 +11,9 @@
             <a href="" class="list-group-item list-group-item-action bg-light">Lista de Usuarios</a>
             <a href="" class="list-group-item list-group-item-action bg-light">Agregar Usuarios</a>
         </div>
-        <a href="" class="list-group-item list-group-item-action bg-light">Productos</a>
+        <a href="#" id="btn" class="list-group-item list-group-item-action bg-light">Productos</a>
         <a href="${pageContext.request.contextPath}/listarusuarios" class="list-group-item list-group-item-action bg-light">Requerimientos</a>
+        <input type="submit" onclick="eliminarusuario(1);"  value="l">
+        <input type="submit" id="btn"  value="l">
     </div>
 </div>
