@@ -34,7 +34,7 @@ public class UsuarioDao implements Iusuario {
             String sql = "CALL AgregarUsuario(?,?,?,?,?)";
             ps = con.getConnection().prepareCall(sql);
             ps.setString(1, usuario.getUsuarioNombre());
-            ps.setInt(2, usuario.getUsuarioTelefono());
+            ps.setString(2, usuario.getUsuarioTelefono());
             ps.setString(3, usuario.getUsuarioCorreo());
             ps.setString(4, usuario.getUsuarioClave());
             ps.setInt(5, usuario.getRol().getRolId());
@@ -74,7 +74,7 @@ public class UsuarioDao implements Iusuario {
         PreparedStatement pst;
         ResultSet rs;
         List<usuario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM producto.usuario;";
+        String sql = "select * from usuario inner join rol on usuarioRol=rolId;";
         try {
             pst = con.getConnection().prepareStatement(sql);
             rs = pst.executeQuery();
@@ -83,11 +83,12 @@ public class UsuarioDao implements Iusuario {
                 rol rol = new rol();
                 usuario.setUsuarioId(rs.getInt("usuarioId"));
                 usuario.setUsuarioNombre(rs.getString("usuarioNombre"));
-                usuario.setUsuarioTelefono(rs.getInt("usuarioTelefono"));
+                usuario.setUsuarioTelefono(rs.getString("usuarioTelefono"));
                 usuario.setUsuarioCorreo(rs.getString("usuarioCorreo"));
-             /*   rol.setRolId(rs.getInt("rolId"));
+                usuario.setUsuarioEstado(rs.getString("usuarioEstado"));
+              rol.setRolId(rs.getInt("rolId"));
                 rol.setRolNombre(rs.getString("rolNombre"));
-                usuario.setRol(rol);*/
+                usuario.setRol(rol);
                 lista.add(usuario);
             }
 
@@ -112,14 +113,19 @@ public class UsuarioDao implements Iusuario {
         usuario usuario = new usuario();
         try {
 
-            String sql = "select * from usuario where usuarioId=" + id;
+            String sql = "select * from usuario inner join rol on usuarioRol=rolId where usuarioId=" + id;
             ps = con.getConnection().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.absolute(1)) {
+                rol rol=new rol();
                 usuario.setUsuarioId(rs.getInt("usuarioId"));
                 usuario.setUsuarioNombre(rs.getString("usuarioNombre"));
-                usuario.setUsuarioTelefono(rs.getInt("usuarioTelefono"));
+                usuario.setUsuarioTelefono(rs.getString("usuarioTelefono"));
                 usuario.setUsuarioCorreo(rs.getString("usuarioCorreo"));
+                usuario.setUsuarioEstado(rs.getString("usuarioEstado"));
+                rol.setRolId(rs.getInt("rolId"));
+                rol.setRolNombre(rs.getString("rolNombre"));
+                usuario.setRol(rol);
                 return usuario;
 
             }
@@ -139,7 +145,7 @@ public class UsuarioDao implements Iusuario {
         try {
             ps = con.getConnection().prepareCall(sql);
             ps.setString(1, usuario.getUsuarioNombre());
-            ps.setInt(2, usuario.getUsuarioTelefono());
+            ps.setString(2, usuario.getUsuarioTelefono());
             ps.setString(3, usuario.getUsuarioCorreo());
             ps.setInt(4, usuario.getUsuarioId());
             ps.execute();

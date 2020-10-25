@@ -13,15 +13,24 @@ public class usuario {
  
     int usuarioId;
     String usuarioNombre;
-    int usuarioTelefono;
+    String usuarioTelefono;
     String usuarioCorreo;
     String usuarioClave;
+    String usuarioEstado;
+
+    public String getUsuarioEstado() {
+        return usuarioEstado;
+    }
+
+    public void setUsuarioEstado(String usuarioEstado) {
+        this.usuarioEstado = usuarioEstado;
+    }
     private rol rol;
 
     public usuario() {
     }
 
-    public usuario(int usuarioId, String usuarioNombre, int usuarioTelefono, String usuarioCorreo, String usuarioClave, rol rol) {
+    public usuario(int usuarioId, String usuarioNombre, String usuarioTelefono, String usuarioCorreo, String usuarioClave, rol rol) {
         this.usuarioId = usuarioId;
         this.usuarioNombre = usuarioNombre;
         this.usuarioTelefono = usuarioTelefono;
@@ -46,11 +55,11 @@ public class usuario {
         this.usuarioNombre = usuarioNombre;
     }
 
-    public int getUsuarioTelefono() {
+    public String getUsuarioTelefono() {
         return usuarioTelefono;
     }
 
-    public void setUsuarioTelefono(int usuarioTelefono) {
+    public void setUsuarioTelefono(String usuarioTelefono) {
         this.usuarioTelefono = usuarioTelefono;
     }
 

@@ -137,8 +137,9 @@ public class usuarioControlador extends HttpServlet {
                 out.println("<td>" + lista.get(i).getUsuarioNombre() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioTelefono() + "</td>");
                 out.println("<td>" + lista.get(i).getUsuarioCorreo() + "</td>");
-                out.println("<td></td>");
-                out.println("<td><button type=\"button\" onclick=\"ConsultarUsuario('Modulos/Administrador/EditarUsuario.jsp','Editar Usuario');\" class=\"btn btn-warning\">Editar</button></td>");
+                out.println("<td>" + lista.get(i).getUsuarioEstado() + "</td>");
+                out.println("<td>"+lista.get(i).getRol().getRolNombre()+"</td>");
+                out.println("<td><button type=\"button\" onclick=\"ConsultarUsuario('Modulos/Administrador/EditarUsuario.jsp','Editar Usuario',"+lista.get(i).getUsuarioId()+");\" class=\"btn btn-warning\">Editar</button></td>");
                 out.println("<td><button type=\"button\" onclick='eliminarusuario(" + lista.get(i).getUsuarioId() + ");' class=\"btn btn-danger form-group\">Eliminar</button></td>");
                 out.println("</tr>");
                 cont++;
@@ -152,7 +153,7 @@ public class usuarioControlador extends HttpServlet {
         usuario.setUsuarioNombre(request.getParameter("usuarioNombre"));
         usuario.setUsuarioCorreo(request.getParameter("usuarioCorreo"));
         usuario.setUsuarioId(Integer.parseInt(request.getParameter("usuarioId")));
-        usuario.setUsuarioTelefono(Integer.parseInt(request.getParameter("usuarioTelefono")));
+        usuario.setUsuarioTelefono(request.getParameter("usuarioTelefono"));
         alerta.setTitulo("Sastifatorio");
         alerta.setTexto("Se Actualizo Correctamente");
         alerta.setTipo("succes");
