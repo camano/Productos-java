@@ -18,13 +18,8 @@ import java.util.List;
 public class pruebas {
 
     public static void main(String[] args) throws SQLException {
-        Conexion con = new Conexion();
-        usuario usuario = new usuario();
-        UsuarioDao usuariodao = new UsuarioDao();
-        usuario = usuariodao.consularusuarioid(15);
-        usuario.setUsuarioNombre("pruebas");
-        usuariodao.actualizarusuario(usuario);
-        System.out.println(usuario.getUsuarioNombre());
+        
+        System.out.println("hola");
 
     }
 }
